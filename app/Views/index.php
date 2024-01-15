@@ -1,3 +1,4 @@
+<!-- Jerico Lopez-->
 <?= $this->extend("layout/bg") ?>
 <?= $this->section('content') ?>
 <title>Index</title>
