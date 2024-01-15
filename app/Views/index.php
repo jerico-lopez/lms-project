@@ -4,8 +4,7 @@
 <title>Index</title>
 <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">JolliWasp</a>
-        <a class="navbar-brand" href="#">Food Ordering System</a>
+        <a class="navbar-brand" href="#">LMS</a>
     </div>
 </nav>
 <div class="container">
