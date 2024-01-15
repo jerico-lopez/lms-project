@@ -1,4 +1,4 @@
-<!-- Jerico Lopez-->
+<!-- Jerico Lopez BSIT 3C-->
 <?= $this->extend("layout/bg") ?>
 <?= $this->section('content') ?>
 <title>Index</title>
