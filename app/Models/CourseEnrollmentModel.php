@@ -15,4 +15,12 @@ class CourseEnrollmentModel extends Model
         'updated_at',
     ];
     protected $returnType = 'object';
+
+    public function getEnrolledStudents($courseId)
+    {
+        return $this->select('students.*')
+            ->join('students', 'students.student_id = course_enrollments.student_id')
+            ->where('course_enrollments.course_id', $courseId)
+            ->findAll();
+    }
 }

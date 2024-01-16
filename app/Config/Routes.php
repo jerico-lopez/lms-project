@@ -23,6 +23,7 @@ $routes->get('/student_signup', 'Signup::student');
 $routes->post('/student_signup', 'Signup::student');
 
 $routes->get('/teacher_home', 'Home::teacher');
+$routes->get('/teacher_viewclass/(:num)', 'Home::teacherViewClass/$1');
 $routes->get('/teacher_addcourse', 'Course::addCourse');
 $routes->post('/teacher_addcourse', 'Course::addCourse');
 

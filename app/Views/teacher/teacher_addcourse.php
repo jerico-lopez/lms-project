@@ -1,6 +1,7 @@
 <?= $this->extend('layout/main') ?>
 <?= $this->section('content') ?>
 <title>Add Course</title>
+<?=$this->include('teacher/teacher_nav.php')?>
 <div class="container">
     <h1>Add Course</h1>
     <form action="<?= base_url() ?>teacher_addcourse" method="post">

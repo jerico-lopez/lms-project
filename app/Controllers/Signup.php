@@ -35,7 +35,7 @@ class Signup extends BaseController
                 $userModel->save($post);
 
                 $session = session();
-                $session->setFlashdata('success-add-teacher', 'Teacher successfully saved!');
+                $session->setFlashdata('success-add-teacher', 'Account added! Please login.');
 
                 return redirect()->to(base_url('teacher_login'));
             }

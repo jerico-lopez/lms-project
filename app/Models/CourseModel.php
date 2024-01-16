@@ -16,4 +16,9 @@ class CourseModel extends Model
         'class_code'
     ];
     protected $returnType = 'object';
+
+    public function getCoursesByTeacher($teacherId)
+    {
+        return $this->where('instructor_id', $teacherId)->findAll();
+    }
 }
