@@ -24,17 +24,42 @@ class Home extends BaseController
     }
     public function teacherViewClass($courseId)
     {
-        $data = [];
-
         // Load the CourseEnrollmentModel
         $enrollmentModel = new \App\Models\CourseEnrollmentModel();
+        $announcementModel= new \App\Models\AnnouncementModel();
 
         // Get the enrolled students for the current course
         $data['enrolledStudents'] = $enrollmentModel->getEnrolledStudents($courseId);
+        $data['announcements'] = $announcementModel->getAnnouncements($courseId);
+        helper(['form']);
 
+        //runs when submit button is clicked
+        if ($this->request->getMethod() == 'post') {
+            $post = $this->request->getPost();
+            //return dd($post); //for debug
+
+            //textfield validation
+            $rules = [
+                'announcement' => ['label' => 'announcement', 'rules' => 'required'],
+            ];
+
+            if (!$this->validate($rules)) {
+                $data['validation'] = $this->validator;
+            } else {
+                //save Announcement to db
+                $post['course_id'] = $courseId;
+                $AnnouncementModel = new \App\Models\AnnouncementModel();
+                $AnnouncementModel->save($post);
+
+                $session = session();
+                $session->setFlashdata('success-add-announcement', 'Announcement added.');
+            }
+        }
         // Load the view and pass the enrolled students
+        $data['course_id'] = $courseId;
         return view('teacher/teacher_viewclass', $data);
     }
+
     public function student(): string
     {
         return view('student/student_home');

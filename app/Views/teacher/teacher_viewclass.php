@@ -64,7 +64,7 @@
         width: 100%;
         padding: 12px 16px;
         border-radius: 8px;
-        color: #fff;
+        color: black;
         font-family: inherit;
         background-color: transparent;
         border: 1px solid #414141;
@@ -75,7 +75,7 @@
         padding: 12px 16px;
         border-radius: 8px;
         resize: none;
-        color: #fff;
+        color: black;
         height: 96px;
         border: 1px solid black;
         background-color: transparent;
@@ -116,11 +116,11 @@
     }
 
     .form-container .form-submit-btn:hover {
-        background-color: #313131;;
+        background-color: #313131;
+        ;
         border-color: black;
     }
 </style>
-<?= $this->include('teacher/teacher_nav.php') ?>
 <div class="container">
     <div class="row">
         <div class="col-2">
@@ -140,14 +140,23 @@
         <div class="col">
             <div class="board">
                 <div class="form-container">
-                    <form class="form">
+                    <form action="<?= base_url() ?>teacher_viewclass/<?= $course_id ?>" method="post" class="form">
                         <div class="form-group">
                             <label for="textarea" style="font-size: 15px; color:black;">Announcement:</label>
-                            <textarea name="textarea" id="textarea" rows="10" cols="50" required="">          </textarea>
+                            <textarea name="announcement" id="announcement" rows="10" cols="50" required="">          </textarea>
                         </div>
                         <button class="form-submit-btn" type="submit">Submit</button>
                     </form>
                 </div>
+                <?php if (empty($announcements)) : ?>
+                    <p>No Announcements.</p>
+                <?php else : ?>
+                    <?php foreach ($announcements as $announcement) : ?>
+                        <div class="alert alert-primary">
+                            <?= $announcement->announcement ?>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>
