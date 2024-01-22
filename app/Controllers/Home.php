@@ -63,6 +63,16 @@ class Home extends BaseController
     }
     public function student(): string
     {
-        return view('student/student_home');
+        $data = [];
+
+        // Get the teacher ID from the session
+        $studentId = session()->get('studentId');
+        $ceModel = new \App\Models\CourseEnrollmentModel();
+
+        // Get all courses for the current teacher and push to the $data
+        $data['courses'] = $ceModel->getEnrolledCourses($studentId);
+
+        // Load the view and return the courses
+        return view('student/home', $data);
     }
 }

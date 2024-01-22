@@ -10,7 +10,6 @@ class Enroll extends BaseController
 
         if ($this->request->getMethod() == 'post') {
             $classCode = $this->request->getPost('class_code');
-
             // Class Code Validation
             if (!empty($classCode)) {
                 $courseModel = new \App\Models\CourseModel();
@@ -35,8 +34,8 @@ class Enroll extends BaseController
                         $enrollmentModel->insert($enrollmentData);
 
                         $session = session();
-                        $session->setFlashdata('success-enroll', 'Enrollment successful!');
-                        return redirect()->to(base_url('student_home'));
+                        $session->setFlashdata('enroll-status', 'Enrollment successful!');
+                        return redirect()->to(base_url('student/home'));
                     } else {
                         // Student is already enrolled
                         $data['error'] = 'You are already enrolled in this course.';
@@ -51,6 +50,6 @@ class Enroll extends BaseController
             }
         }
 
-        return view('student/student_enroll', $data);
+        return view('student/enroll', $data);
     }
 }

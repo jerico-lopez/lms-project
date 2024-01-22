@@ -78,9 +78,9 @@ class Signup extends BaseController
                 $session = session();
                 $session->setFlashdata('success-add-student', 'Student successfully added!');
 
-                return redirect()->to(base_url('student_login'));
+                return redirect()->to(base_url('student/login'));
             }
         }
-        return view('student/student_signup', $data);
+        return view('student/signup', $data);
     }
 }

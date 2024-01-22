@@ -87,13 +87,6 @@ class Login extends BaseController
         } else {
             $teacherFullname = $teacher->first_name . ' ' . $teacher->middle_name . ' ' . $teacher->last_name;
         }
-
-        if ($teacher->profile_picture==null){
-            $picture = 'public/img/blank_profile.png';
-        }
-        else{
-            $picture = $teacher->profile_picture;
-        }
         //provide variables for every field of teacher and set session of teacher
         $data = [
             'teacherId' => $teacher->teacher_id,
@@ -104,7 +97,7 @@ class Login extends BaseController
             'teacherEmail' => $teacher->email,
             'teacherPassword' => $teacher->password,
             'teacherFullName' => $teacherFullname,
-            'picture' => $picture,
+            'image' => $teacher->image,
             'isLoggedIn' => true
         ];
         session()->set($data);
@@ -139,11 +132,11 @@ class Login extends BaseController
                 } else {
                     // Redirect upon successful login
                     $this->setStudentSession($student);
-                    return redirect()->to(base_url('student_home'));
+                    return redirect()->to(base_url('student/home'));
                 }
             }
         }
-        return view('student/student_login');
+        return view('student/login');
     }
 
     public function setStudentSession($student)

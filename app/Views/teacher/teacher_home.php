@@ -51,8 +51,31 @@
     .card-link {
         text-decoration: none;
     }
-</style>
-<?= $this->include('teacher/teacher_nav.php') ?>
+
+    .button {
+        font-size: medium;
+        display: block;
+        width: 50%;
+        background: linear-gradient(45deg, #AA0000 0%, #F61C01 100%);
+        color: white;
+        padding-block: 15px;
+        border-radius: 20px;
+        box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
+        border: none;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .button:hover {
+        transform: scale(1.03);
+        box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;
+    }
+
+    .button:active {
+        transform: scale(0.95);
+        box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
+    }
+</style><?= $this->include('teacher/teacher_nav.php') ?>
+
 
 <div class="container">
     <h2>Class</h2>
@@ -70,7 +93,7 @@
                                 Code: <?= $course->class_code ?>
                             </p>
                             <form action="<?= base_url() ?>teacher/delete/class/<?= $course->course_id ?>" method="get">
-                            <button type="submit" style="background-color: red; color: white;">Delete Class</button>
+                            <button type="submit" class="button">Delete</button>
                             </form>
                         </div>
                     </a>

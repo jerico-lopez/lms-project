@@ -15,7 +15,7 @@ class TeacherModel extends Model
         'age',
         'email',
         'password',
-        'profile_picture'
+        'image'
     ];
     protected $returnType = 'object';
 }

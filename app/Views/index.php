@@ -63,6 +63,6 @@
 </nav>
 <div class="d-flex justify-content-center" style="margin: 27%;">
     <a href="teacher_login" style="margin-right: 30px;">Teacher<span></span></a>
-    <a href="student_login">Student<span></span></a>
+    <a href="student/login">Student<span></span></a>
 </div>
 <?= $this->endSection('content') ?>

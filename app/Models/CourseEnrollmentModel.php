@@ -23,4 +23,11 @@ class CourseEnrollmentModel extends Model
             ->where('course_enrollments.course_id', $courseId)
             ->findAll();
     }
+    public function getEnrolledCourses($studentId)
+    {
+        return $this->select('courses.*')
+            ->join('courses', 'courses.course_id = course_enrollments.course_id')
+            ->where('course_enrollments.student_id', $studentId)
+            ->findAll();
+    }
 }
