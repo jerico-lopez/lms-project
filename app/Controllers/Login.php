@@ -82,12 +82,18 @@ class Login extends BaseController
         //set full name of current teacher
         $teacherFullname = '';
 
-        if (empty($teacher->middlename)) {
+        if (empty($teacher->middle_name)) {
             $teacherFullname = $teacher->first_name . ' ' . $teacher->last_name;
         } else {
             $teacherFullname = $teacher->first_name . ' ' . $teacher->middle_name . ' ' . $teacher->last_name;
         }
 
+        if ($teacher->profile_picture==null){
+            $picture = 'public/img/blank_profile.png';
+        }
+        else{
+            $picture = $teacher->profile_picture;
+        }
         //provide variables for every field of teacher and set session of teacher
         $data = [
             'teacherId' => $teacher->teacher_id,
@@ -98,6 +104,7 @@ class Login extends BaseController
             'teacherEmail' => $teacher->email,
             'teacherPassword' => $teacher->password,
             'teacherFullName' => $teacherFullname,
+            'picture' => $picture,
             'isLoggedIn' => true
         ];
         session()->set($data);
@@ -144,7 +151,7 @@ class Login extends BaseController
         //set full name of current student
         $studentFullname = '';
 
-        if (empty($student->middlename)) {
+        if (empty($student->middle_name)) {
             $studentFullname = $student->first_name . ' ' . $student->last_name;
         } else {
             $studentFullname = $student->first_name . ' ' . $student->middle_name . ' ' . $student->last_name;

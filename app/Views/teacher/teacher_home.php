@@ -62,16 +62,16 @@
         <?php else : ?>
             <?php foreach ($courses as $course) : ?>
                 <div class="col-md-3" style="margin-top: 30px;">
-                    <a href="<?=base_url()?>teacher_viewclass/<?= $course->course_id ?>" class="card-link">
+                    <a href="<?= base_url() ?>teacher_viewclass/<?= $course->course_id ?>" class="card-link">
                         <div class="card" style="background-color: #4970A9;">
                             <div class="card-image"><img src="public\img\lms_bg.jpg" class="card-img-top" alt="Course Image"></div>
                             <p class="card-title"><?= $course->course_name ?></p>
                             <p class="card-body">
-                                Section: <br>
-                                Students: <br>
-                                Schedule: <br>
                                 Code: <?= $course->class_code ?>
                             </p>
+                            <form action="<?= base_url() ?>teacher/delete/class/<?= $course->course_id ?>" method="get">
+                            <button type="submit" style="background-color: red; color: white;">Delete Class</button>
+                            </form>
                         </div>
                     </a>
                 </div>

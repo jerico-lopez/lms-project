@@ -53,13 +53,14 @@ class Home extends BaseController
 
                 $session = session();
                 $session->setFlashdata('success-add-announcement', 'Announcement added.');
+                $back = base_url("teacher_viewclass/$courseId");
+                return redirect()->to($back);
             }
         }
         // Load the view and pass the enrolled students
         $data['course_id'] = $courseId;
         return view('teacher/teacher_viewclass', $data);
     }
-
     public function student(): string
     {
         return view('student/student_home');

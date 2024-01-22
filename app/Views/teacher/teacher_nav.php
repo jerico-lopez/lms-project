@@ -7,17 +7,22 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="teacher_home">Home</a>
+          <a class="nav-link active" aria-current="page" href="<?= base_url('teacher_home') ?>">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="teacher_addcourse">Add Course</a>
+          <a class="nav-link" href="<?= base_url('teacher_addcourse') ?>">Add Course</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <?php $profilePictureData = session()->get('picture'); ?>
+            <img src="data:image/jpeg;base64,<?= base64_encode($profilePictureData) ?>" alt="Profile Picture" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+
             <?= session()->get('teacherFullName') ?>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="confirm_logout">Logout</a></li>
+            <li><a class="dropdown-item" href="<?= base_url('teacher/upload/profilepicture') ?>">Upload Profile Picture</a></li>
+            <li><a class="dropdown-item" href="<?= base_url('teacher/edit/profile') ?>">Edit Profile</a></li>
+            <li><a class="dropdown-item" href="<?= base_url('teacher/confirm/logout') ?>">Logout</a></li>
           </ul>
         </li>
       </ul>

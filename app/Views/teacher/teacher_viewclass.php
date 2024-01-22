@@ -13,9 +13,20 @@
 
     .board {
         margin-top: 30px;
-        padding-top: 10px;
+        padding-bottom: 30px;
         width: 1000px;
         min-height: 500px;
+        background: rgb(236, 236, 236);
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+
+    .ann {
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 10px;
+        width: 900px;
+        min-height: 80px;
         background: rgb(236, 236, 236);
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     }
@@ -121,6 +132,8 @@
         border-color: black;
     }
 </style>
+<?= $this->include('teacher/teacher_nav.php') ?>
+
 <div class="container">
     <div class="row">
         <div class="col-2">
@@ -149,11 +162,22 @@
                     </form>
                 </div>
                 <?php if (empty($announcements)) : ?>
-                    <p>No Announcements.</p>
+                    <p style="margin-left: 30px;">No Announcements.</p>
                 <?php else : ?>
                     <?php foreach ($announcements as $announcement) : ?>
-                        <div class="alert alert-primary">
-                            <?= $announcement->announcement ?>
+                        <div class="ann">
+                            Announcement:
+                            <div class="alert alert-primary">
+                                <?= $announcement->announcement ?>
+                            </div>
+                            <form action="<?= base_url() ?>teacher/delete/announcement/<?= $announcement->announcement_id ?>" method="post">
+                                <div>
+                                    <button type="submit" style="border-style: none;">
+                                    <i class="fa-solid fa-trash-can" style="color: red;"></i>
+                                    </button>
+                                </div>
+                            </form>
+                            <?= date('F j, Y H:i a', strtotime($announcement->created_at)) ?>
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>

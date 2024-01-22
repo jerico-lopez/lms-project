@@ -6,7 +6,7 @@ class Logout extends BaseController
 {
     public function confirmLogout()
     {
-        return view('confirm_logout');
+        return view('teacher/confirm_logout');
     }
     public function logout()
     {
