@@ -147,12 +147,12 @@
                     <?php foreach ($enrolledStudents as $student) : ?>
                         <li>
                             <div class="dropdown">
-                                <a class="" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="" href="#" style="text-decoration: none; color:black;" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="<?= base_url() ?>uploads/students/<?= $student->image ?>" alt="Profile Picture" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
                                     <?= $student->first_name ?> <?= $student->last_name ?>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li><a class="dropdown-item" href="<? base_url() ?>/teacher/confirm/remove/student/<?= $student->student_id ?>">Remove</a></li>
+                                    <li><a class="dropdown-item" href="<?= base_url() ?>teacher/confirm/remove/student/<?= $student->student_id ?>">Remove</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -195,5 +195,5 @@
         </div>
     </div>
 </div>
-<?=session()->set('back', $course_id)?>
+<?= session()->set('back', $course_id) ?>
 <?= $this->endSection('content') ?>

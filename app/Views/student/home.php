@@ -91,7 +91,7 @@
                             <p class="card-body">
                                 Code: <?= $course->class_code ?>
                             </p>
-                            <form action="<?= base_url() ?>teacher/delete/class/<?= $course->course_id ?>" method="get">
+                            <form action="<?= base_url() ?>student/unenroll/class/<?= $course->course_id ?>" method="get">
                             <button type="submit" class="button">Unenroll</button>
                             </form>
                         </div>

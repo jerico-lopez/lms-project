@@ -5,7 +5,7 @@
     .card {
         margin-top: 30px;
         padding-top: 10px;
-        width: 190px;
+        width: 270px;
         min-height: 254px;
         background: rgb(236, 236, 236);
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
@@ -13,6 +13,7 @@
 
     .board {
         margin-top: 30px;
+        margin-left: 70px;
         padding-top: 10px;
         padding-bottom: 30px;
         width: 1000px;
@@ -44,7 +45,10 @@
                     <ul>
                         <p>Students:</p>
                         <?php foreach ($enrolledStudents as $student) : ?>
-                            <li><?= $student->first_name ?> <?= $student->last_name ?></li>
+                            <li>
+                                <img src="<?= base_url() ?>uploads/students/<?= $student->image ?>" alt="Profile Picture" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+                                <?= $student->first_name ?> <?= $student->last_name ?>
+                            </li>
                         <?php endforeach; ?>
                     </ul>
                 <?php endif; ?>
@@ -61,13 +65,6 @@
                             <div class="alert alert-primary">
                                 <?= $announcement->announcement ?>
                             </div>
-                            <form action="<?= base_url() ?>teacher/delete/announcement/<?= $announcement->announcement_id ?>" method="post">
-                                <div>
-                                    <button type="submit" style="border-style: none;">
-                                    <i class="fa-solid fa-trash-can" style="color: red;"></i>
-                                    </button>
-                                </div>
-                            </form>
                             <?= date('F j, Y H:i a', strtotime($announcement->created_at)) ?>
                         </div>
                     <?php endforeach; ?>

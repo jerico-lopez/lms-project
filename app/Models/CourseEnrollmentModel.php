@@ -30,11 +30,11 @@ class CourseEnrollmentModel extends Model
             ->where('course_enrollments.student_id', $studentId)
             ->findAll();
     }
-    public function getCourseEnrollmentId($studentId)
+    public function getCourseEnrollment($studentId)
     {
         return $this->select('course_enrollments.*')
-            ->join('course_enrollments', 'course_enrollments.student_id = students.student_id')
+            ->join('students', 'course_enrollments.student_id = students.student_id')
             ->where('students.student_id', $studentId)
-            ->findAll();
+            ->first();
     }
 }

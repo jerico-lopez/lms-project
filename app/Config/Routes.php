@@ -34,10 +34,14 @@ $routes->post('/teacher_viewclass/(:num)', 'Home::teacherViewClass/$1');
 $routes->get('/teacher/delete/class/(:num)', 'Delete::teacherDeleteClass/$1');
 $routes->post('/teacher/delete/class/(:num)', 'Delete::teacherDeleteClass/$1');
 $routes->post('/teacher/delete/announcement/(:num)', 'Delete::teacherDeleteAnnouncement/$1');
+$routes->get('/teacher/confirm/remove/student/(:num)', 'Delete::teacherRemoveStudentFromClass/$1');
+$routes->post('/teacher/confirm/remove/student/(:num)', 'Delete::teacherRemoveStudentFromClass/$1');
 $routes->get('/teacher_addcourse', 'Course::addCourse');
 $routes->post('/teacher_addcourse', 'Course::addCourse');
 
 $routes->get('/student/home', 'Home::student');
+$routes->get('/student/edit/profile', 'Edit::student');
+$routes->post('/student/edit/profile', 'Edit::student');
 $routes->get('/student/viewclass/(:num)', 'Home::studentViewClass/$1');
 $routes->post('/student/viewclass/(:num)', 'Home::studentViewClass/$1');
 $routes->get('/student/enroll', 'Enroll::enroll');
