@@ -5,7 +5,7 @@
     .card {
         margin-top: 30px;
         padding-top: 10px;
-        width: 190px;
+        width: 270px;
         min-height: 254px;
         background: rgb(236, 236, 236);
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
@@ -13,6 +13,7 @@
 
     .board {
         margin-top: 30px;
+        margin-left: 70px;
         padding-bottom: 30px;
         width: 1000px;
         min-height: 500px;
@@ -134,55 +135,65 @@
 </style>
 <?= $this->include('teacher/teacher_nav.php') ?>
 
-<div class="container">
-    <div class="row">
-        <div class="col-2">
-            <div class="card">
-                <?php if (empty($enrolledStudents)) : ?>
-                    <p>No students enrolled in this course.</p>
-                <?php else : ?>
-                    <ul>
-                        <p>Students:</p>
-                        <?php foreach ($enrolledStudents as $student) : ?>
-                            <li><?= $student->first_name ?> <?= $student->last_name ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                <?php endif; ?>
-            </div>
-        </div>
-        <div class="col">
-            <div class="board">
-                <div class="form-container">
-                    <form action="<?= base_url() ?>teacher_viewclass/<?= $course_id ?>" method="post" class="form">
-                        <div class="form-group">
-                            <label for="textarea" style="font-size: 15px; color:black;">Announcement:</label>
-                            <textarea name="announcement" id="announcement" rows="10" cols="50" required="">          </textarea>
-                        </div>
-                        <button class="form-submit-btn" type="submit">Submit</button>
-                    </form>
-                </div>
-                <?php if (empty($announcements)) : ?>
-                    <p style="margin-left: 30px;">No Announcements.</p>
-                <?php else : ?>
-                    <?php foreach ($announcements as $announcement) : ?>
-                        <div class="ann">
-                            Announcement:
-                            <div class="alert alert-primary">
-                                <?= $announcement->announcement ?>
+<div class="container"">
+    <div class=" row">
+    <div class="col-2">
+        <div class="card">
+            <?php if (empty($enrolledStudents)) : ?>
+                <p>No students enrolled in this course.</p>
+            <?php else : ?>
+                <ul>
+                    <p>Students:</p>
+                    <?php foreach ($enrolledStudents as $student) : ?>
+                        <li>
+                            <div class="dropdown">
+                                <a class="" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="<?= base_url() ?>uploads/students/<?= $student->image ?>" alt="Profile Picture" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+                                    <?= $student->first_name ?> <?= $student->last_name ?>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li><a class="dropdown-item" href="<? base_url() ?>/teacher/confirm/remove/student/<?= $student->student_id ?>">Remove</a></li>
+                                </ul>
                             </div>
-                            <form action="<?= base_url() ?>teacher/delete/announcement/<?= $announcement->announcement_id ?>" method="post">
-                                <div>
-                                    <button type="submit" style="border-style: none;">
-                                    <i class="fa-solid fa-trash-can" style="color: red;"></i>
-                                    </button>
-                                </div>
-                            </form>
-                            <?= date('F j, Y H:i a', strtotime($announcement->created_at)) ?>
-                        </div>
+                        </li>
                     <?php endforeach; ?>
-                <?php endif; ?>
+                </ul>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="col">
+        <div class="board">
+            <div class="form-container">
+                <form action="<?= base_url() ?>teacher_viewclass/<?= $course_id ?>" method="post" class="form">
+                    <div class="form-group">
+                        <label for="textarea" style="font-size: 15px; color:black;">Announcement:</label>
+                        <textarea name="announcement" id="announcement" rows="10" cols="50" required="">          </textarea>
+                    </div>
+                    <button class="form-submit-btn" type="submit">Submit</button>
+                </form>
             </div>
+            <?php if (empty($announcements)) : ?>
+                <p style="margin-left: 30px;">No Announcements.</p>
+            <?php else : ?>
+                <?php foreach ($announcements as $announcement) : ?>
+                    <div class="ann">
+                        Announcement:
+                        <div class="alert alert-primary">
+                            <?= $announcement->announcement ?>
+                        </div>
+                        <form action="<?= base_url() ?>teacher/delete/announcement/<?= $announcement->announcement_id ?>" method="post">
+                            <div>
+                                <button type="submit" style="border-style: none;">
+                                    <i class="fa-solid fa-trash-can" style="color: red;"></i>
+                                </button>
+                            </div>
+                        </form>
+                        <?= date('F j, Y H:i a', strtotime($announcement->created_at)) ?>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
 </div>
+<?=session()->set('back', $course_id)?>
 <?= $this->endSection('content') ?>

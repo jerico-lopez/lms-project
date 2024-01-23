@@ -38,8 +38,13 @@ $routes->get('/teacher_addcourse', 'Course::addCourse');
 $routes->post('/teacher_addcourse', 'Course::addCourse');
 
 $routes->get('/student/home', 'Home::student');
+$routes->get('/student/viewclass/(:num)', 'Home::studentViewClass/$1');
+$routes->post('/student/viewclass/(:num)', 'Home::studentViewClass/$1');
 $routes->get('/student/enroll', 'Enroll::enroll');
 $routes->post('/student/enroll', 'Enroll::enroll');
+$routes->get('/student/upload/photo', 'Upload::studentUploadPhoto');
+$routes->post('/student/upload/photo', 'Upload::studentUploadPhoto');
 
-$routes->get('/teacher/confirm/logout', 'Logout::confirmLogout');
+$routes->get('/student/confirm/logout', 'Logout::studentConfirmLogout');
+$routes->get('/teacher/confirm/logout', 'Logout::teacherConfirmLogout');
 $routes->get('/logout', 'Logout::logout');

@@ -16,7 +16,8 @@ class StudentModel extends Model
         'year',
         'section',
         'email',
-        'password'
+        'password',
+        'image'
     ];
     protected $returnType = 'object';
 }

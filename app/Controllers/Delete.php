@@ -36,4 +36,16 @@ class Delete extends BaseController
         }
         return view('teacher/teacher_deleteclass', $data);
     }
+
+    public function teacherRemoveStudentFromClass($id){
+        $ceModel = new \App\Models\CourseEnrollmentModel();
+        if ($this->request->getMethod() == 'post') {
+            $data['announcements'] = $ceModel->getCourseEnrollmentId($id);
+            $ceModel->delete($id);
+
+            $session = session();
+            $session->setflashdata('success-remove-student', 'Student Removed Succcessfuly!');
+            return redirect(session()->get('back'));
+        }
+    }
 }

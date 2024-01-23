@@ -162,6 +162,7 @@ class Login extends BaseController
             'studentEmail' => $student->email,
             'studentPassword' => $student->password,
             'studentFullName' => $studentFullname,
+            'image' => $student->image,
             'isLoggedIn' => true
         ];
         session()->set($data);
