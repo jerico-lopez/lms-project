@@ -2,12 +2,17 @@
 <?= $this->section('content') ?>
 <title>Home</title>
 <style>
+    h2{
+        color: white;
+        font-weight: bold;
+        margin-top: 70px;
+    }
     .card {
         padding: 20px;
         width: 230px;
         min-height: 170px;
         border-radius: 20px;
-        box-shadow: 5px 5px 8px #EEC794;
+        box-shadow: 5px 5px 8px #353535;
         transition: 0.4s;
     }
 
@@ -18,7 +23,7 @@
     .card-title {
         font-size: 18px;
         font-weight: 600;
-        color: white;
+        color: #2E76DE;
         margin: 15px 0 0 10px;
     }
 
@@ -33,7 +38,7 @@
 
     .card-body {
         margin: 0px 0 0 10px;
-        color: white;
+        color: black;
         font-size: 15px;
     }
 
@@ -85,7 +90,7 @@
             <?php foreach ($courses as $course) : ?>
                 <div class="col-md-3" style="margin-top: 30px;">
                     <a href="<?= base_url() ?>student/viewclass/<?= $course->course_id ?>" class="card-link">
-                        <div class="card" style="background-color: #4970A9;">
+                        <div class="card" style="background-color: white;">
                             <div class="card-image"><img src="<?=base_url()?>public\img\lms_bg.jpg" class="card-img-top" alt="Course Image"></div>
                             <p class="card-title"><?= $course->course_name ?></p>
                             <p class="card-body">

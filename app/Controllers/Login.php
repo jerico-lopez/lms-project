@@ -98,7 +98,7 @@ class Login extends BaseController
             'teacherPassword' => $teacher->password,
             'teacherFullName' => $teacherFullname,
             'image' => $teacher->image,
-            'isLoggedIn' => true
+            'loggedInAs' => 'teacher'
         ];
         session()->set($data);
     }
@@ -163,7 +163,7 @@ class Login extends BaseController
             'studentPassword' => $student->password,
             'studentFullName' => $studentFullname,
             'image' => $student->image,
-            'isLoggedIn' => true
+            'loggedInAs' => 'student'
         ];
         session()->set($data);
     }

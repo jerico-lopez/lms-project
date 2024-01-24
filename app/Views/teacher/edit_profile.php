@@ -75,6 +75,11 @@
 <div class="d-flex justify-content-center">
     <div class="container">
         <div class="heading">Edit Profile</div>
+        <?php if (isset($validation)) : ?>
+            <div class="alert alert-danger" role="alert">
+                <?= $validation->listErrors(); ?>
+            </div>
+        <?php endif; ?>
         <form action="<?= base_url() ?>teacher/edit/profile" method="post" class="form">
             <input class="input" type="first_name" name="first_name" id="first_name" placeholder="Firstname" value="<?= set_value('first_name', $teacher->first_name) ?>">
             <input class="input" type="middle_name" name="middle_name" id="middle_name" placeholder="Middle Name" value="<?= set_value('middle_name', $teacher->middle_name) ?>">

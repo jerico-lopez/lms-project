@@ -1,6 +1,16 @@
 <?= $this->extend('layout/main') ?>
 <?= $this->section('content') ?>
 <title>Add Course</title>
+<style>
+    h1{
+        color: white;
+        font-weight: bold;
+        margin-top: 70px;
+    }
+    label{
+        color: white;
+    }
+</style>
 <?=$this->include('teacher/teacher_nav.php')?>
 <div class="container">
     <h1>Add Course</h1>

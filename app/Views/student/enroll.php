@@ -1,6 +1,17 @@
 <?= $this->extend('layout/main') ?>
 <?= $this->section('content') ?>
 <title>Student Enroll</title>
+<style>
+    h1{
+        color: white;
+        font-weight: bold;
+        margin-top: 70px;
+    }
+    label{
+        color: white;
+    }
+</style>
+
 <?=$this->include('student/nav.php')?>
 <div class="container">
     <h1>Enroll</h1>

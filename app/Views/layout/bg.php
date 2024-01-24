@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="public/css/bootstrap.css">
     <style>
         body {
-            background-image: url('public/img/');
+            background-image: url('public/img/lms_bg.jpg');
             background-color: white;
             background-repeat: no-repeat;
-            height: 300px;
             background-size: cover;
         }
     </style>

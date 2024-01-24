@@ -75,7 +75,7 @@
 <div class="d-flex justify-content-center">
     <div class="container">
         <div class="heading">Sign Up</div>
-        <!--returns student added failed alert -->
+        <!--returns alert -->
         <?php if (isset($validation)) : ?>
             <div class="alert alert-danger" role="alert">
                 <?= $validation->listErrors(); ?>
